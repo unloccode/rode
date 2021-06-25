@@ -1,0 +1,19 @@
+{
+  "name": "rode",
+  "version": "1.0.0",
+  "description": "api endpoint",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unloccode/rode.git"
+  },
+  "author": "George Limo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unloccode/rode/issues"
+  },
+  "homepage": "https://github.com/unloccode/rode#readme"
+}
