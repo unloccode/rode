@@ -3,7 +3,6 @@ const env = require('./env.js');
 
 //import sequelize
 const Sequelize = require('sequelize');
-const { Model } = require('sequelize');
 const sequelize = new Sequelize(
     env.database,
     env.username,
