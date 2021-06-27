@@ -2,7 +2,7 @@ const db = require('../config/db.config.js');
 const User = db.User;
 
 exports.createUser = (req, res) => {
-    let user = {},
+    let user = {};
     try{
         //build user object
         user.username = req.body.username;
