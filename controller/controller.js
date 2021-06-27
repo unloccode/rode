@@ -110,11 +110,11 @@ exports.updateUser = async(req, res) => {
         }else{
             //make changes to db
             let updatedObject = {
-                username = req.body.username,
-                email = req.body.email,
-                town = req.body.town,
-                age = req.body.age,
-                password = req.body.password
+                username: req.body.username,
+                email: req.body.email,
+                town: req.body.town,
+                age: req.body.age,
+                password: req.body.password
             }
             let result = await User.update(updatedObject, {
                 returning: true,
