@@ -32,7 +32,7 @@ exports.createUser = (req, res) => {
 }
 
 exports.getUser = (req, res) => {
-    Customer.findByPk(req.params.id, {
+    User.findByPk(req.params.id, {
         attributes: [
             'id',
             'username',
