@@ -1,17 +1,13 @@
 const express = require('express');
-const app = express();
-
 var bodyParser = require('body-parser');
+const db = require('./config/db.config.js');
+let router = require('./router/router.js');
+const cors = require('cors');
 
+const app = express();
+const User = db.User;
 global.__basedir = __dirname;
 
-const db = require('./config/db.config.js');
-
-const User = db.User;
-
-let router = require('./router/router.js');
-
-const cors = require('cors');
 
 const corsOptions = {
     origin: 'http://localhost:4200',
