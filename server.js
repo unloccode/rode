@@ -4,9 +4,11 @@ const db = require('./config/db.config.js');
 let router = require('./router/router.js');
 const cors = require('cors');
 
+//global
+global.__basedir = __dirname;
+
 const app = express();
 const User = db.User;
-global.__basedir = __dirname;
 
 
 const corsOptions = {
