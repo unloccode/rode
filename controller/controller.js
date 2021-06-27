@@ -37,8 +37,8 @@ exports.getUser = (req, res) => {
             'id',
             'username',
             'email',
-            'age',
             'town',
+            'age',
             'password'
         ]
     }).then(user=>{
@@ -59,8 +59,8 @@ exports.Users = (req, res) => {
                 'id',
                 'username',
                 'email',
-                'age',
                 'town',
+                'age',
                 'password'
             ]
         }).then(users=>{
@@ -96,4 +96,51 @@ exports.deleteUser = async(req, res)=>{
             error: error.message
         });
     }
-})
+}
+
+exports.updateUser = async(req, res) => {
+    try{
+        //update user
+        let user = await User.findByPk(req.params.id);
+        if(!user){
+            res.status(400).json({
+                message: "Not found for updating, a USER with id=" + user,
+                error: "404"
+            });
+        }else{
+            //make changes to db
+            let updatedObject = {
+                username = req.body.username,
+                email = req.body.email,
+                town = req.body.town,
+                age = req.body.age,
+                password = req.body.password
+            }
+            let result = await User.update(updatedObject, {
+                returning: true,
+                where: {id: req.body.id},
+                attributes: [
+                    'id',
+                    'username',
+                    'email',
+                    'town',
+                    'age',
+                    'password'
+                ]
+            });
+            //return a response to the client
+            if(!result){
+                res.status(500).json({
+                    message: "Error -> Cannot make updates for USER with id=" + req.params.id,
+                    error: "Failed to Update"
+                });
+            }
+            res.status(200).json(result);
+        }
+    }catch(error){
+        res.status(500).json({
+            message: "Error ->Canno make updates for the USER with id=" + req.params.id,
+            error: error.message
+        });
+    }
+}
